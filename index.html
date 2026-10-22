@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educação Física — 301</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Educação Física — Turma 301</h1>
+            <div class="controls">
+                <button onclick="toggleMusic()" id="btnMusic">Música: OFF</button>
+            </div>
+        </header>
+
+        <!-- Tela inicial -->
+        <section id="startScreen" class="screen active">
+            <h2>Bem-vindo!</h2>
+            <p>Disciplina: <strong>Educação Física</strong></p>
+            <p>Turma: <strong>301</strong></p>
+            <p>Você tem <strong>90 segundos</strong> por questão.</p>
+            <p>Marque quem acertou: cada acerto vale <strong>100 pontos</strong>.</p>
+
+            <div class="team-setup">
+                <h3>Nome das Equipes</h3>
+                <div class="team-inputs">
+                    <input type="text" id="team1" value="Equipe 1" placeholder="Equipe 1">
+                    <input type="text" id="team2" value="Equipe 2" placeholder="Equipe 2">
+                    <input type="text" id="team3" value="Equipe 3" placeholder="Equipe 3">
+                    <input type="text" id="team4" value="Equipe 4" placeholder="Equipe 4">
+                </div>
+            </div>
+
+            <button onclick="startGame()" id="btnPlay">Jogar</button>
+        </section>
+
+        <!-- Tela do jogo -->
+        <section id="gameScreen" class="screen">
+            <div class="timer-bar"><div id="timerFill"></div></div>
+            <div class="timer" id="timerText">90s</div>
+
+            <div class="question-card" id="qCard">
+                <div class="q-meta">
+                    <span class="q-ano" id="qAno"></span>
+                    <span class="q-num" id="qNum"></span>
+                </div>
+                <h3 id="qEnunciado"></h3>
+                <div class="alternativas" id="qAlts"></div>
+                <div class="resultado" id="qResultado"></div>
+                <button onclick="showAnswer()" id="btnAnswer">Mostrar resposta</button>
+                <button onclick="nextQuestion()" id="btnNext" style="display:none">Próxima questão</button>
+            </div>
+
+            <div class="ranking" id="rankingBox">
+                <h4>Ranking por equipes</h4>
+                <ul id="rankingList"></ul>
+                <div class="team-points-container" id="teamPointsContainer"></div>
+            </div>
+        </section>
+
+        <!-- Tela de ranking final -->
+        <section id="endScreen" class="screen">
+            <h2>Fim de jogo!</h2>
+            <p>Confira o ranking final:</p>
+            <div class="ranking" id="finalRankingBox">
+                <h4>Ranking Final</h4>
+                <ul id="finalRankingList"></ul>
+            </div>
+            <button onclick="resetGame()" id="btnReset">Jogar de novo</button>
+        </section>
+    </div>
+
+    <script src="perguntas.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

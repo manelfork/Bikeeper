@@ -1,0 +1,301 @@
+/* Reset e variáveis */
+:root {
+    --bg-dark: #1a1a2e;
+    --bg-card: #16213e;
+    --primary: #06d6a0;
+    --primary-dark: #04b08a;
+    --accent: #ffd166;
+    --danger: #e94560;
+    --success: #2ecc71;
+    --text-light: #eee;
+    --text-muted: #aaa;
+    --border: #333;
+}
+
+/* Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 18px;
+}
+.container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+h1 {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+button {
+    background: var(--primary);
+    color: #111;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+button:hover {
+    background: var(--primary-dark);
+}
+button:active {
+    transform: scale(0.98);
+}
+
+/* Telas */
+.screen {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+.screen.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Tela inicial */
+#startScreen {
+    text-align: center;
+}
+#startScreen h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: var(--accent);
+}
+.team-setup {
+    margin: 20px 0;
+    text-align: left;
+    display: inline-block;
+}
+.team-setup h3 {
+    margin-bottom: 10px;
+    color: var(--text-light);
+    font-size: 20px;
+}
+.team-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.team-inputs input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--text-light);
+    box-sizing: border-box;
+}
+.team-inputs input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Tela de jogo */
+.timer-bar {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+#timerFill {
+    height: 100%;
+    width: 100%;
+    background: var(--accent);
+    transition: width 0.1s linear;
+}
+.timer {
+    text-align: center;
+    font-size: 22px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+.question-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+.q-meta {
+    font-size: 16px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+.q-ano {
+    color: var(--danger);
+    font-weight: 600;
+}
+.q-num {
+    color: var(--text-light);
+}
+#qEnunciado {
+    font-size: 22px;
+    margin: 14px 0;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+.alternativas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.alternativas button {
+    background: var(--bg-card);
+    color: var(--text-light);
+    border: 2px solid var(--border);
+    text-align: left;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.alternativas button:hover {
+    background: #1e2e4a;
+    border-color: var(--primary);
+}
+.alternativas button.correto {
+    background: var(--success) !important;
+    color: #fff !important;
+    border-color: var(--success) !important;
+    transform: translateX(4px);
+}
+.resultado {
+    background: var(--danger);
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+    font-size: 18px;
+    display: none;
+}
+.resultado h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 20px;
+}
+.resultado p {
+    margin: 0;
+}
+
+/* Ranking */
+.ranking {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 16px;
+}
+.ranking h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-size: 20px;
+}
+.ranking ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.ranking li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.ranking li button {
+    background: var(--primary);
+    color: #111;
+    border: none;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    margin-left: auto;
+}
+.ranking li button:hover {
+    background: var(--primary-dark);
+}
+
+/* Tela final */
+#endScreen {
+    text-align: center;
+    padding: 30px;
+}
+#endScreen h2 {
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+#endScreen p {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+#finalRankingBox {
+    margin: 20px auto;
+    max-width: 400px;
+}
+#finalRankingList {
+    text-align: left;
+    margin: 0 auto;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    .team-setup h3 { font-size: 18px; }
+    .team-inputs input { font-size: 16px; padding: 10px; }
+    button { padding: 10px 16px; font-size: 16px; }
+    #qEnunciado { font-size: 20px; }
+    .alternativas button { font-size: 16px; padding: 12px; }
+    .resultado { font-size: 16px; padding: 12px; }
+    .ranking li { font-size: 16px; }
+    .ranking h4, #endScreen h2 { font-size: 22px; }
+}
+/* ajustes finais */
+body{font-size:22px}
+h1{font-size:36px}
+.timer{font-size:56px;font-weight:700;text-align:center}
+.timer.low{color:#e94560}
+.timer-bar{height:14px}
+#qEnunciado{font-size:26px}
+.alternativas button{font-size:24px}
+.question-card{max-height:none;overflow-y:visible}
+.resultado{background:#0f2a4a;border:3px solid #2ecc71;color:#fff;font-size:22px}
+.resultado h4{color:#2ecc71;font-size:26px}
+#qEnunciado,.resultado{white-space:pre-line}
